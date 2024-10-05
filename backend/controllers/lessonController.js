@@ -1,15 +1,15 @@
-const Lesson = require("./../models/lessonModel");
-const catchAsync = require("./../utils/catchAsync");
-const AppError = require("./../utils/appError");
+const Lesson = require('./../models/lessonModel');
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./../utils/appError');
 
 exports.getAllLessons = catchAsync(async (req, res, next) => {
-  const tours = await Lesson.find();
+  const lessons = await Lesson.find();
 
   res.status(200).json({
-    status: "success",
-    results: tours.length,
+    status: 'success',
+    results: lessons.length,
     data: {
-      tours,
+      lessons: lessons,
     },
   });
 });
