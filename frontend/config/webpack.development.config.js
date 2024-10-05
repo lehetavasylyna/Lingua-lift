@@ -12,7 +12,11 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
+                            modules: {
+                                mode: 'local',
+                                localIdentName: `[name]_[local]--[hash:base64:5]`,
+                                namedExport: false,
+                            },
                         },
                     },
                 ],

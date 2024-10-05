@@ -5,6 +5,7 @@ const basicConfig = require('./webpack.config');
 
 const config = {
     mode: 'production',
+    plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
             {
@@ -14,17 +15,18 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
-                            // modules: {
-                            //   mode: "local",
-                            // }
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]__[local]',
+                                // namedExport: true, case 1;
+                                namedExport: false,
+                            },
                         },
                     },
                 ],
             },
         ],
     },
-    plugins: [new MiniCssExtractPlugin()],
 };
 
 module.exports = merge(basicConfig, config);
